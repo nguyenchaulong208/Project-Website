@@ -1,0 +1,47 @@
+:root{
+    --web-pink: #FA97C2;
+    --web1-blue: #2FA0D5;
+    --web1-green: #73C926; 
+}
+
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 20px; 
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Changa One', cursive;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 60px;
+    line-height: 60px;
+    font-weight: 900;
+}
+
+/* format style menu: id = "menu" */
+#menu a{
+    display: block;
+    font-weight: bold;
+    padding: 0 1.25rem;
+    color: black;
+    font-family: 'Changa One', cursive;
+    
+}
+#container{
+    background: #2FA0D5;
+}
+
+#menu li.active a{
+    color: var(--web1-blue);
+}
+
+/* button search */
+#btn_Search i{
+    color: var(--web1-green)
+}
+#btn_Search input{
+width: 8rem;
+}
