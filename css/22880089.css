@@ -95,3 +95,8 @@ width: 8rem;
 .readmoreLink{
     color: var(--web1-blue);
 }
+
+#row div{
+    font-family: 'Changa One', cursive;
+    
+}
