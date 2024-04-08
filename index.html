@@ -28,8 +28,7 @@
         <!-- navbar menu -->
         <header class="container">
             <nav
-                class="navbar navbar-expand-sm navbar-light bg-light"
-            >
+                class="navbar navbar-expand-sm navbar-light bg-light">
                 <div class="container">
                     <a class="navbar-brand" href="#">
                         <img src="images/logo.png">
@@ -42,63 +41,161 @@
                         data-bs-target="#menu"
                         aria-controls="menu"
                         aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
+                        aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="menu">
                         <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#" aria-current="page"
-                                    >Home
-                                    <span class="visually-hidden">(current)</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Gallery</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Blogs</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contacts</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Login</a>
-                            </li>
+                                    <a class="nav-link" href="#" aria-current="page">Home
+                                        <!-- <span class="visually-hidden">(current)</span> -->
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Gallery</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Blogs</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Contacts</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Login</a>
+                                </li>
                             
-                                <div
+                                <!-- <div
                                     class="dropdown-menu"
-                                    aria-labelledby="dropdownId"
-                                >
+                                    aria-labelledby="dropdownId">
                                     <a class="dropdown-item" href="#"
-                                        >Action 1</a
-                                    >
+                                        >Action 1</a>
                                     <a class="dropdown-item" href="#"
-                                        >Action 2</a
-                                    >
-                                </div>
+                                        >Action 2</a>
+                                </div> -->
                             </li>
                         </ul>
+
+                        <!-- Search -->
                         <form class="d-flex my-2 my-lg-0 border rounded-pill" id="btn_Search">
                             <input
                                 class="form-control ms-3 border-0" 
-                                type="text"
-                                placeholder="Search"
-                            />
+                                placeholder="Search"/> 
+                            <!--Thuộc tính btn-outline-success là hiệu ứng khi rê chuột vào btn search-->
                             <button
+                            
                                 class="btn btn-outline-success my-2 my-sm-0 border-0"
-                                type="submit">
+                                type="submit"> 
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                            </button>
                         </form>
                     </div>
                 </div>
             </nav>
         </header>
+<!--------------------------------------------------------------->
+<!--BANNER-->
+<section class="container-fluid" id="banner">
+    <div class="container text-white text-center">
+<!--Tạo slider bằng carousel default-->
+<!-- data-bs As options can be passed via data attributes or JavaScript,
+    you can append an option name to data-bs-, as in data-bs-animation="{value}". 
+    Make sure to change the case type of the option name from “camelCase” to “kebab-case” when passing the options via data attributes. 
+    For example, use data-bs-custom-class="beautifier" instead of data-bs-customClass="beautifier" -->
+
+    <div id="carouselId" class="carousel slide" data-bs-ride="carousel-banner">
+    <ol class="carousel-indicators">
+        <li
+            data-bs-target="#carouselId"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="First slide"><span>0</span></li>
+        <li
+            data-bs-target="#carouselId"
+            data-bs-slide-to="1"
+            aria-label="Second slide"><span>1</span></li>
+        <li
+            data-bs-target="#carouselId"
+            data-bs-slide-to="2"
+            aria-label="Third slide"><span>2</span></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+         <h1>Web Development<br/>
+            for everyone</h1>
+         <a href="#" class="btn text-bold text-uppercase rounded-4 px-4">see more</a>
+        </div>
+        <div class="carousel-item">
+            <h1>22880089<br/>
+                Nguyễn Châu Long</h1>
+            
+        </div>
+        <div class="carousel-item">
+            <h1>Lập trình Web1<br/>
+                DTTX - Học kỳ 2 - Năm học 2023-2024</h1>
+        </div>
+    </div>
+
+    <!-- btn dùng để scroll slider -->
+    <!-- <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselId"
+        data-bs-slide="prev"
+    >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselId"
+        data-bs-slide="next"
+    >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button> -->
+</div>
+
+    </div>
+</section>
+
+<!--products-->
+
+<section class="container">
+    <div class="row text-center py-5">
+        <div class="col">
+            <img src="images/icon-1.png" alt="Coffee">
+            <h3>Coffee</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <a class="readmoreLink btn btn-link" href="#">Read more</a>
+        </div>
+
+        <div class="col">
+            <img src="images/icon-2.png" alt="Drinks">
+            <h3>Drinks</h3>
+            <p>Cumque necessitatibus eos, pariatur quasi suscipit fugit porro?</p>
+            <a class="readmoreLink btn btn-link" href="#">Read more</a>
+        </div>
+
+        <div class="col">
+            <img src="images/icon-3.png" alt="Cakes">
+            <h3>Cakes</h3>
+            <p>Pariatur saepe,libero nulla culpa reiciendis labore unde.</p>
+            <a class="readmoreLink btn btn-link" href="#">Read more</a>
+        </div>
+
+        <div class="col">
+            <img src="images/icon-4.png" alt="Coffee">
+            <h3>Coffee</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <a class="readmoreLink btn btn-link" href="#">Read more</a>
+        </div>
+    </div>
+</section>
+
         <main></main>
         <footer>
             <!-- place footer here -->

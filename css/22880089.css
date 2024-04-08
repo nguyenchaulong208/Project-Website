@@ -30,9 +30,6 @@ h1 {
     font-family: 'Changa One', cursive;
     
 }
-#container{
-    background: #2FA0D5;
-}
 
 #menu li.active a{
     color: var(--web1-blue);
@@ -44,4 +41,57 @@ h1 {
 }
 #btn_Search input{
 width: 8rem;
+}
+
+#banner{
+    background-image: url('../images/bg-banner.gif');
+}
+/* Hình nền thẻ div con banner */
+#banner > div{
+    background: url('../images/logo_bg.png') left top no-repeat, url('../images/search_bg.png') right top no-repeat;
+    padding: 5rem 0rem 3rem 0rem
+}
+#banner a{
+    background-color: var(--web-pink);
+    color: white;
+    font-family: 'Changa One', cursive;
+    font-size: 2rem;
+    
+}
+#banner .carousel-item{
+    min-height: 15rem;
+}
+#banner .carousel-indicators li{
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 1.2rem;
+    border: none;
+    margin: 0rem 0.25rem;
+    position: relative;
+    
+}
+#banner .carousel-indicators li span{
+    position: absolute;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 0.6rem;
+    border: none;
+    top: 0.3rem;
+    left: 0.3rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    text-indent: -99999999rem;
+    text-align: center;
+    
+}
+#banner .carousel-indicators li.active span{
+    background-color: var(--web1-green);
+}
+#banner ol{
+    list-style: none;
+}
+
+/*products*/
+.readmoreLink{
+    color: var(--web1-blue);
 }
