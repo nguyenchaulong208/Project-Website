@@ -91,6 +91,11 @@ width: 8rem;
     list-style: none;
 }
 
+#banner-small{
+    background-image: url(../images/bg-banner.gif) ;
+    padding: 5px;
+}
+
 /*products*/
 .readmoreLink{
     color: var(--web1-blue);
@@ -110,6 +115,8 @@ width: 8rem;
 /* new */
 #news .date{
     background-color: var(--web1-green);
+    width: 6rem;
+    padding: 1.5rem;
 }
 /* FOOTER */
 footer{
@@ -126,4 +133,9 @@ footer{
 }
 #footer_menu a.active{
     color: var(--web-pink);
+}
+
+#loginForm button[type='submit']{
+    background-color: var(--web1-blue);
+    color: white;
 }
