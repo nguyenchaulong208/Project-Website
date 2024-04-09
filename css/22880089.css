@@ -109,7 +109,9 @@ width: 8rem;
 #aboutus{
     background-color: var(--web-pink);
 }
-
+#about-us h4{
+    color: black;
+}
 #signupForm{
     border-style: dashed !important;
     border-color: rgba(0, 0, 0, 0.5) !important;
@@ -141,4 +143,13 @@ footer{
 #loginForm button[type='submit']{
     background-color: var(--web1-blue);
     color: white;
+}
+
+#testimonials{
+    background-color: var(--web-pink);
+  
+}
+#testimonials .col{
+    background: url(../images/quot.png) left top no-repeat;
+    padding-left: 3rem;
 }
