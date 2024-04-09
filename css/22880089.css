@@ -94,9 +94,36 @@ width: 8rem;
 /*products*/
 .readmoreLink{
     color: var(--web1-blue);
+    margin-top:-4px !important ;
 }
 
-#row div{
-    font-family: 'Changa One', cursive;
-    
+/* About us , newsletter */
+#aboutus{
+    background-color: var(--web-pink);
+}
+
+#signupForm{
+    border-style: dashed !important;
+    border-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* new */
+#news .date{
+    background-color: var(--web1-green);
+}
+/* FOOTER */
+footer{
+    background-image: url(../images/bg-footer.gif);
+}
+
+
+#footer_menu a{
+    color: white;
+    font-weight: bold;
+    font-family: 'Change One',cursive;
+    display: block;
+    padding: 0 1.25rem;
+}
+#footer_menu a.active{
+    color: var(--web-pink);
 }
