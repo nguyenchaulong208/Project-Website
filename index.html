@@ -286,7 +286,7 @@
             <img src="{{imagepath}}" alt="{{name}}" onmouseover="setActiveImagepath(this,'{{imagepath}}')"
             onmouseout="setActiveImagepath(this,'{{imagepath}}', false)">
             <h3>{{name}}</h3>
-            <p>{{summary}}</p>
+            <p class="text-black-50">{{summary}}</p>
             <a class="readmoreLink btn btn-link pt-0" href="#" onclick="load_data('products/{{id}}','read-template','content')">Read more</a>
 
         </div>
@@ -310,7 +310,7 @@
 
                     <div>
                         <h3>{{name}}</h3>
-                        <p>{{summary}}</p>
+                        <p class="text-black-50">{{summary}}</p>
                     
                     </div>
         </div>
@@ -340,9 +340,9 @@
                 img.src = imagepath.replace('.','-active.');
             }
             else{
-                img.src = imagepath
+                img.src = imagepath;
             }
-            
+            img.nextElementSibling.classList.toggle('web1-text-blue');
         }
     </script>
 </body>

@@ -95,10 +95,22 @@
             </nav>
         </header>
 <!--------------------------------------------------------------->
-<!--BANNER-->
+<!--ABOUT US-->
 
- 
+<section id="banner-small">
 </section>
+<div id="content">
+<section class="container py-5">
+    <div class="row">
+        <div class=" col-md-8 col-sm-12" id="about-us">
+
+        </div>
+
+    </div>
+</section>
+ 
+
+</div>
         <main></main>
         <footer class="text-center container-fluid text-white py-3" >
             <!-- place footer here -->
@@ -202,5 +214,40 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"
+        integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/22880089.js"></script>
+
+<script id="about-us-template" type="text/x-handlebars-template">
+    <h1 class="py-3">About Us</h1>
+    {{#each data}}
+    <section class="container py-5">
+        <div>
+            <img src="{{thumbpath}}" alt="{{name}}" class="float-start rounded-4 me-3">
+           
+            <p class="text-black-50">{{{summary}}}</summary></p>
+            <a href="#" class="btn btn-link readmoreLink ps-0" onclick="load_data('aboutus/{{id}}','read-template','content')">Read more</a>
+    
+        </div>
+        
+    </section>
+    {{/each}}
+
+</script>
+
+<script id="read-template" type="text/x-handlebars-template">
+   <div class="container py-5">
+    {{#each data}}
+    <h1 class="py-3">{{name}}</h1>
+    <img src="{{imagepath }}" alt="{{name}}" class="float-start rounded-4">
+    <p>{{{description}}}</p>
+    {{/each}}
+</div>
+</script>
+
+<script>
+    load_data('aboutus', 'about-us-template', 'about-us')
+</script>
     </body>
 </html>

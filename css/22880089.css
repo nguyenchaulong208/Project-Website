@@ -101,6 +101,9 @@ width: 8rem;
     color: var(--web1-blue);
     margin-top:-4px !important ;
 }
+.web1-text-blue{
+    color: var(--web1-blue);
+}
 
 /* About us , newsletter */
 #aboutus{
