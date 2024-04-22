@@ -34,12 +34,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="menu">
                     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="index.html" aria-current="page">Home
                                 <!-- <span class="visually-hidden">(current)</span> -->
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link" href="about.html">About</a>
                         </li>
                         <li class="nav-item">
@@ -112,10 +112,10 @@
         <!-- place footer here -->
         <ul class="nav justify-content-center py-3" id="footer_menu">
             <li class="nav-item">
-                <a class="nav-link active" href="index.html" aria-current="page">Home</a>
+                <a class="nav-link" href="index.html" aria-current="page">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
+                <a class="nav-link active" href="about.html">About</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="gallery.html">Gallery</a>
@@ -280,7 +280,7 @@
     <div class="row py-3">
         {{#each data}}
         <div class="col">
-            <a class="text-decoration-none" href="#" onclick="load_data('testimonials/{{id}}','read-our-team-template','content')">
+            <a class="text-decoration-none" href="#" onclick="load_data('team/{{id}}','read-our-team-template','content')">
                 <h3 class="text-black">{{name}}</h3> 
                  <img src="{{thumbpath}}" alt="{{name}}" class="rounded-4 me-3 img-fluid">
              <p class="text-black-50">{{{summary}}}</summary></p>

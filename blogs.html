@@ -45,7 +45,7 @@
                     </button>
                     <div class="collapse navbar-collapse" id="menu">
                         <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                     <a class="nav-link" href="index.html" aria-current="page">Home
                                         <!-- <span class="visually-hidden">(current)</span> -->
                                     </a>
@@ -56,7 +56,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="gallery.html">Gallery</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item active">
                                     <a class="nav-link" href="blogs.html">Blogs</a>
                                 </li>
                                 <li class="nav-item">
@@ -99,13 +99,17 @@
 
  
 </section>
+<section id="banner-small"></section>
+<section class="container">
+
+</section>
         <main></main>
         <footer class="text-center container-fluid text-white py-3" >
             <!-- place footer here -->
             <ul
                 class="nav justify-content-center py-3" id="footer_menu" >
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.html" aria-current="page"
+                    <a class="nav-link" href="index.html" aria-current="page"
                         >Home</a>
                 </li>
                 <li class="nav-item">
@@ -115,7 +119,7 @@
                     <a class="nav-link" href="gallery.html">Gallery</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="blogs.html">Blogs</a>
+                    <a class="nav-link active" href="blogs.html">Blogs</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contacts.html">Contacts</a>
@@ -202,5 +206,23 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"
+        integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/22880089.js"></script>
+
+    <script id="blogs-categories-template" type="text/x-handlebars-template">
+        <h1>Categories</h1>
+        <ul class="py-3">
+            {{#each data}}
+            <li><a class="text-black-50 text-decoration-none" href="#">{{name}}</a></li>
+            {{/each}}
+        </ul>
+
+    </script>
+    <script>
+        load_data('blogs-categories','blogs-categories-template', "blogs-categories")
+    </script>
+
     </body>
 </html>
