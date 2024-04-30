@@ -1,6 +1,6 @@
 
 const API = 'https://web1-api.vercel.app/api';
-const AUTHENTICAT_API = 'https://web1-api.vercel.app/user';
+const AUTHENTICAT_API = 'https://web1-api.vercel.app/users';
 // get list product
 async function load_data(request, templateId, viewId){
     const response = await fetch(`${API}/${request}`);

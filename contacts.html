@@ -343,7 +343,7 @@
                         },
                         body: JSON.stringify(postData)
                     });
-                    
+
                     let result = await response.json();
                     if(result.status == 200){
                         responseMessage.innerText = result.message;
@@ -355,9 +355,9 @@
                         
                 } catch(error){
                     let responseMessage = document.getElementById('responseMessage')
-                responseMessage.innerText = 'OK';
+                responseMessage.innerText = error;
                 responseMessage.classList.remove();
-                responseMessage.classList.toggle('text-info');
+                responseMessage.classList.toggle('text-danger');
                 }
                 
                
