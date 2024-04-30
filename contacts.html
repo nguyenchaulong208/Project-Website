@@ -171,6 +171,7 @@
                     </div>
                    
                 </div>
+                <div id="responseMessage" class="text-danger text-center"></div>
             </form>
         </div>
 
@@ -290,9 +291,27 @@
         <script>
             function onSubmit(e) {
               e.preventDefault();
-              grecaptcha.enterprise.ready(async () => {
-                const token = await grecaptcha.enterprise.execute('6Lc0f8spAAAAAFI0C-z3iFMpFLQ6gTyQsMK5Cspt', {action: 'LOGIN'});
+              grecaptcha.enterprise.ready(function(){
+                grecaptcha.enterprise.execute('6Lc0f8spAAAAAFI0C-z3iFMpFLQ6gTyQsMK5Cspt', {action: 'submit'}).then(async function(token) {
+                  let response = await fetch('verify.php', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                       'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({'g-token': token})
+                  });
+                  if(response.status === 200) {
+                    sendMail();
+                  } else {
+                    document.getElementById('responseMessage').innerText = 'Error: Cannot verify reCAPTCHA';
+                  }
+                });
               });
+            }
+
+            function sendMail() {
+              document.getElementById('responseMessage').innerText = 'OK';
             }
           </script>
     </body>
