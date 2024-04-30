@@ -60,8 +60,8 @@
                     </ul>
 
                     <!-- Search -->
-                    <form class="d-flex my-2 my-lg-0 border rounded-pill" id="btn_Search">
-                        <input class="form-control ms-3 border-0" placeholder="Search" />
+                    <form class="d-flex my-2 my-lg-0 border rounded-pill" id="btn_Search" method="GET" action="search.html">
+                        <input class="form-control ms-3 border-0" placeholder="Search" name="keyword" id="keyword" required/>
                         <!--Thuộc tính btn-outline-success là hiệu ứng khi rê chuột vào btn search-->
                         <button class="btn btn-outline-success my-2 my-sm-0 border-0" type="submit">
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -281,7 +281,7 @@
             onmouseout="setActiveImagepath(this,'{{imagepath}}', false)">
             <h3>{{name}}</h3>
             <p class="text-black-50">{{summary}}</p>
-            <a class="readmoreLink btn btn-link pt-0" href="#" onclick="load_data('products/{{id}}','read-template','content')">Read more</a>
+            <a class="readmoreLink btn btn-link pt-0" href="?request=products/{{id}}" onclick="load_data('products/{{id}}','read-template','content')">Read more</a>
 
         </div>
         {{/each}}

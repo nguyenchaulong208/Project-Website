@@ -56,7 +56,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="gallery.html">Gallery</a>
                                 </li>
-                                <li class="nav-item active">
+                                <li class="nav-item ">
                                     <a class="nav-link" href="blogs.html">Blogs</a>
                                 </li>
                                 <li class="nav-item">
@@ -79,10 +79,15 @@
                         </ul>
 
                         <!-- Search -->
-                        <form class="d-flex my-2 my-lg-0 border rounded-pill" id="btn_Search" method="GET" action="search.html">
-                            <input class="form-control ms-3 border-0" placeholder="Search" name="keyword" id="keyword" required/>
+                        <form class="d-flex my-2 my-lg-0 border rounded-pill" id="btn_Search">
+                            <input
+                                class="form-control ms-3 border-0" 
+                                placeholder="Search"/> 
                             <!--Thuộc tính btn-outline-success là hiệu ứng khi rê chuột vào btn search-->
-                            <button class="btn btn-outline-success my-2 my-sm-0 border-0" type="submit">
+                            <button
+                            
+                                class="btn btn-outline-success my-2 my-sm-0 border-0"
+                                type="submit"> 
                                 <i class="fa-solid fa-magnifying-glass"></i>
                         </form>
                     </div>
@@ -92,17 +97,14 @@
 <!--------------------------------------------------------------->
 <!--BANNER-->
 
+ 
+</section>
+<section id="banner-small">
 
-<section id="banner-small"></section>
-<section class="container py-5">
-<div class="row">
-    <div class="col-8" id="blogs">
-       
-    </div>
-    <div class="col-4" id="blogs-categories">
-        
-    </div>
-</div>
+</section>
+
+<section class="container py-5" id="content">
+    
 </section>
         <main></main>
         <footer class="text-center container-fluid text-white py-3" >
@@ -120,14 +122,14 @@
                     <a class="nav-link" href="gallery.html">Gallery</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="blogs.html">Blogs</a>
+                    <a class="nav-link " href="blogs.html">Blogs</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contacts.html">Contacts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
-                <a class="nav-link linkLogout" href="#" onclick="logout()">Logout</a>
+                    <a class="nav-link linkLogout" href="#" onclick="logout()">Logout</a>
                 </li>
             </ul>
             <p class="text-white-50">Copyright &copy; 2024 by Nguyễn Châu Long - 22880089</p>
@@ -183,16 +185,15 @@
         </div>
         
         <!-- Optional: Place to the bottom of scripts -->
-        
-        
-        
-        <!-- Modal Body -->
         <script>
             const myModal = new bootstrap.Modal(
                 document.getElementById("modalId"),
                 options,
             );
         </script>
+        
+        
+        <!-- Modal Body -->
         <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
         
         
@@ -206,206 +207,47 @@
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-            crossorigin="anonymous"
-        ></script>
+            crossorigin="anonymous">
+        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"
         integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="js/22880089.js"></script>
-    <script src="js/handlebars-pagination-helper.js"></script>
-
-   
-    <!-- Blogs -->
-    <script id="blogs-template" type="text/x-handlebars-template">
-        <h1>Blogs</h1>
-        {{#each data}}
-        <div class="clearfix py-3">
-                <h3>{{name}}</h3>
-                <p class="text-black-50">by {{author}} in <a href="#"
-                    onclick="loadBlogs('blogs/categories/{{category.id}}')">{{category.name}}</a> on {{formatDate date}}. <a href="#" onclick="loadBlogDetails('{{id}}, true')">Comment ({{comments.length}})</a></p>
-                
-                <img src="{{thumbpath}}" alt="{{name}}" class="float-start me-3 border rounded-4">
-                <p class="text-black-50">{{summary}}</p>
-
-                <a href="#" class="btn btn-link readmoreLink" onclick="loadBlogDetails('{{id}}')">Read more</a>
-        </div>
-        {{/each}}
-        {{#pagination currentPage pageCount}}
-        <nav aria-label="Page navigation">
-            <ul
-                class="pagination" >
-                {{#each pages}}
-                {{#if isCurrent}}
-                <li class="page-item disabled" aria-current="page">
-                    <a class="page-link" href="#" onclick="loadBlogs('{{../../request}},{{page}}')">{{page}}</a>
-                </li>
-                {{/if}}
-                {{#unless isCurrent}}
-                <li class="page-item"><a class="page-link" href="#" onclick="loadBlogs('{{../../request}},{{page}}')">{{page}}</a></li>
-                {{/unless}}
-               {{/each}}
-            </ul>
-        </nav>
-        {{/pagination}}
-    </script>
-<!-- categories -->
-<script id="blogs-categories-template" type="text/x-handlebars-template">
-    <h1>Categories</h1>
-    <ul class="py-3">
-        {{#each data}}
-        <li><a class="text-black-50 text-decoration-none" href="#"
-            onclick="loadBlogs('blogs/categories/{{id}}')">{{name}}</a></li>
-        {{/each}}
-    </ul>
-</script>
-
-<!-- TEMPLATE HANDLERBARS -->
-<script id="details-template" type="text/x-handlebars-template">
-    <h1>Blogs</h1>
-    {{#each data}}
-    <div class="py-3">
-        <h3>{{name}}</h3>
-        <p class="text-black-50">by {{author}} in {{category.name}} on {{formatDate date}}. <a href="#comments">Comments ({{comments.length}})</a></p>
-        <img src="{{imagepath}}" alt="{{name}}" class="float-start me-3 rounded-4">
-        <div class="text-black-50">{{{description}}}</div>
-    </div>
-    <div class="py-3" id="leave-comment">
-        <h3>Leave your comments</h3>
-        <form action="#" method="post" class="text-black-50" onsubmit="addComment(event)">
-            <input type="hidden" name="blogsId" value="{{id}}">
-            <div class="row">
-                <div class="col-4">
-                    
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name (Requidre)</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="" required>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-                    </div>
-                </div>
-                <div class="mb-3">
-                    
-                    <textarea class="form-control" name="comment" id="comment" rows="3" placeholder="Enter your comment" required></textarea>
-                </div>
-                
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="form-check form-check-inline">
-                        <input
-                            class="form-check-input"
-                            type="checkbox"
-                            id="agree"
-                            name="agree"
-                            value="1"
-                        />
-                        <label class="form-check-label" for="agree">Agree to terms and conditions</label>
-                    </div>
-                    
-                    
-                </div>
-                <div class="col text-end">
-                    <button type="submit" class="btn btn-link">Submit Comment</button>
-                </div>
-            </div>
-            <div class="text-center">
-                <div class="text-success" id="responseMessage">
-
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <a name="comments"></a>
-    <div class="bg-dark text-white-50 p-2">
-        COMMENTS ({{comments.length}})
-    </div>
-    <div class="py-3 text-black-50  ">
-        {{#each comments}}
-        <div>
-            <p>{{name}} - {{formatDate date}}</p>
-            <p>{{summary}}</p>
-            <hr>
-        </div>
-        {{/each}}
-    </div>
-{{/each}}
-</script>
-
-    <script>
+        <script src="js/22880089.js"></script>
         
-        Handlebars.registerHelper('formatDate', function(date){
-            let formatDate = new Date(date);
-            let options = {
-                weekday:'short',
-                year:'numeric',
-                month:'short',
-                day:'numeric',
-                timeZoneName:'short'
-            };
-            return formatDate.toLocaleDateString('en-US', options);
-        });
-        async function loadBlogs(request, currentPage = 1){
-            const response = await fetch(`${API}/${request}?page=${currentPage}`);
-            const context = await response.json();
-            context.currentPage = currentPage;
-            context.request = request;
-            var source = document.getElementById('blogs-template').innerHTML;
-            var template = Handlebars.compile(source);
-            var view = document.getElementById('blogs');
-            view.innerHTML = template(context);
+        <script id="search-template" type="text/x-handlebars-template">
+            {{#each data}}
+            <div class="py-3"> 
+                <a class="text-decoration-none" href="#" onclick="load_data('{{type}}/{{id}}','details-template','content')"><h1 class="text-black-50">{{name}}</h1></a>
+                
+                <div class="text-black-50">{{summary}}</div>
+            </div>
+            {{/each}}
+        </script>
 
-        }
-        checkLogin();
-        loadBlogs('blogs');
-        load_data('blogs-categories','blogs-categories-template', "blogs-categories")
-        async function loadBlogDetails(blogsId,gotoComments = false){
-            await load_data(`blogs/${blogsId}`,'details-template','blogs');
+        <script id="details-template" type="text/x-handlebars-template">
+            {{#each data}}
+            <h1>{{name}}</h1>
+            {{#if imagepath}}
+            <img src="{{imagepath}}" alt="{{name}}" class="float-start me-3">
+            {{/if}}
+            <div class="text-black-50">{{{description}}}</div>
+            {{/each}}
+
+        </script>
+
+        <script>
             checkLogin();
-            if(gotoComments){
-                window.location.href = "#comments";
+          
+            let searchParams = new URLSearchParams(location.search);
+            let keyword = searchParams.get("keyword");
+            if(keyword){
+                keyword = keyword.trim();
+                if(keyword!=''){
+                    load_data(`search?keyword=${keyword}`,'search-template','content');
+                }
             }
-        }
-
-        async function addComment(e){
-            e.preventDefault();
-            let token = localStorage.getItem('token');
-            let postData = {
-               name: document.getElementById('name').value,
-               email: document.getElementById('email').value,
-               comment: document.getElementById('comment').value,
-               blogsId: document.getElementById('input[name="blogsId"]').value,
-               agree: (document.getElementById('agree').value == 1)
-            };
-            let responseMessage = document.getElementById('responseMessage');
-            try{
-                let response = await fetch(`${AUTHENTICATE_API}/comments`,{
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                        'Authorization': `Bearer` + token
-                    },
-                    body: JSON.stringify(postData)
-                    
-                    });
-                    let result = await response.json();
-                    if(response.status == 200){
-                       loadBlogDetails(postData.blogsId, true);
-                    } else{
-                        throw new Error(result.message);
-                    }
-            } catch(error){
-                responseMessage.innerHTML = result.message;
-                responseMessage.className = 'text-danger';
-
-            }
-        }
-    </script>
-
+           
+            
+        </script>
     </body>
 </html>
