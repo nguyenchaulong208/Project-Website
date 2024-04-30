@@ -63,8 +63,8 @@
                                     <a class="nav-link" href="contacts.html">Contacts</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#modalLogin">Login</a>
+                                    <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+                                    <a class="nav-link linkLogout" href="#" onclick="logout()">Logout</a>
                                 </li>
                             
                                 <!-- <div
@@ -131,8 +131,8 @@
                     <a class="nav-link" href="contacts.html">Contacts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-bs-toggle="modal"
-                    data-bs-target="#modalLogin">Login</a>
+                    <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+                <a class="nav-link linkLogout" href="#" onclick="logout()">Logout</a>
                 </li>
             </ul>
             <p class="text-white-50">Copyright &copy; 2024 by Nguyễn Châu Long - 22880089</p>
@@ -167,7 +167,7 @@
                         ></button>
                     </div>
                     <div class="modal-body">
-                        <form action="#" method="post" id="loginForm">
+                        <form action="#" method="post" id="formLogin" onsubmit="login(event)">
                             <h3 class="text-center">Login Form</h3>
                             <div class="mb-3">
                                 <input type="text" name="txt_username" id="username" placeholder="Username" class="form-control">
@@ -180,8 +180,8 @@
                            
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        
+                    <div class="modal-footer justify-content-center">
+                        <div class="text-danger" id="errorMessage"></div>
                     </div>
                 </div>
             </div>
@@ -274,9 +274,10 @@
         <img src="{{imagepath}}" alt="{{name}}" class="float-start me-3 rounded-4">
         <div class="text-black-50">{{{description}}}</div>
     </div>
-    <div class="py-3">
+    <div class="py-3" id="leave-comment">
         <h3>Leave your comments</h3>
-        <form action="#" method="post" class="text-black-50">
+        <form action="#" method="post" class="text-black-50" onsubmit="addComment(event)">
+            <input type="hidden" name="blogsId" value="{{id}}">
             <div class="row">
                 <div class="col-4">
                     
@@ -293,7 +294,7 @@
                 </div>
                 <div class="mb-3">
                     
-                    <textarea class="form-control" name="message" id="message" rows="3" placeholder="Enter your message" required></textarea>
+                    <textarea class="form-control" name="comment" id="comment" rows="3" placeholder="Enter your comment" required></textarea>
                 </div>
                 
             </div>
@@ -316,6 +317,11 @@
                     <button type="submit" class="btn btn-link">Submit Comment</button>
                 </div>
             </div>
+            <div class="text-center">
+                <div class="text-success" id="responseMessage">
+
+                </div>
+            </div>
         </form>
     </div>
 
@@ -336,6 +342,7 @@
 </script>
 
     <script>
+        
         Handlebars.registerHelper('formatDate', function(date){
             let formatDate = new Date(date);
             let options = {
@@ -358,12 +365,49 @@
             view.innerHTML = template(context);
 
         }
+        checkLogin();
         loadBlogs('blogs');
         load_data('blogs-categories','blogs-categories-template', "blogs-categories")
         async function loadBlogDetails(blogsId,gotoComments = false){
             await load_data(`blogs/${blogsId}`,'details-template','blogs');
+            checkLogin();
             if(gotoComments){
                 window.location.href = "#comments";
+            }
+        }
+
+        async function addComment(e){
+            e.preventDefault();
+            let token = localStorage.getItem('token');
+            let postData = {
+               name: document.getElementById('name').value,
+               email: document.getElementById('email').value,
+               comment: document.getElementById('comment').value,
+               blogsId: document.getElementById('input[name="blogsId"]').value,
+               agree: (document.getElementById('agree').value == 1)
+            };
+            let responseMessage = document.getElementById('responseMessage');
+            try{
+                let response = await fetch(`${AUTHENTICATE_API}/comments`,{
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'Authorization': `Bearer` + token
+                    },
+                    body: JSON.stringify(postData)
+                    
+                    });
+                    let result = await response.json();
+                    if(response.status == 200){
+                       loadBlogDetails(postData.blogsId, true);
+                    } else{
+                        throw new Error(result.message);
+                    }
+            } catch(error){
+                responseMessage.innerHTML = result.message;
+                responseMessage.className = 'text-danger';
+
             }
         }
     </script>

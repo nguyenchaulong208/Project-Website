@@ -63,8 +63,8 @@
                                     <a class="nav-link" href="contacts.html">Contacts</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#modalLogin">Login</a>
+                                    <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+                                    <a class="nav-link linkLogout" href="#" onclick="logout()">Logout</a>
                                 </li>
                             
                                 <!-- <div
@@ -136,8 +136,8 @@
                     <a class="nav-link" href="contacts.html">Contacts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-bs-toggle="modal"
-                    data-bs-target="#modalLogin">Login</a>
+                    <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+                    <a class="nav-link linkLogout" href="#" onclick="logout()">Logout</a>
                 </li>
             </ul>
             <p class="text-white-50">Copyright &copy; 2024 by Nguyễn Châu Long - 22880089</p>
@@ -172,7 +172,7 @@
                         ></button>
                     </div>
                     <div class="modal-body">
-                        <form action="#" method="post" id="loginForm">
+                        <form action="#" method="post" id="formLogin" onsubmit="login(event)">
                             <h3 class="text-center">Login Form</h3>
                             <div class="mb-3">
                                 <input type="text" name="txt_username" id="username" placeholder="Username" class="form-control">
@@ -185,8 +185,8 @@
                            
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        
+                    <div class="modal-footer justify-content-center">
+                        <div class="text-danger" id="errorMessage"></div>
                     </div>
                 </div>
             </div>
@@ -244,6 +244,7 @@
        
 
         <script>
+            checkLogin();
             load_data('gallery-categories','gallery-template','gallery-categories');
             load_data('gallery', 'gallery-pic-template', 'gallery');
             function disableLink(link) {

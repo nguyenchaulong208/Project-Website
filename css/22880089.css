@@ -140,7 +140,7 @@ footer{
     color: var(--web-pink);
 }
 
-#loginForm button[type='submit']{
+#formLogin button[type='submit']{
     background-color: var(--web1-blue);
     color: white;
 }
