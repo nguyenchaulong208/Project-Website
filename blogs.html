@@ -188,15 +188,16 @@
         </div>
         
         <!-- Optional: Place to the bottom of scripts -->
+        
+        
+        
+        <!-- Modal Body -->
         <script>
             const myModal = new bootstrap.Modal(
                 document.getElementById("modalId"),
                 options,
             );
         </script>
-        
-        
-        <!-- Modal Body -->
         <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
         
         
@@ -226,12 +227,12 @@
         <div class="clearfix py-3">
                 <h3>{{name}}</h3>
                 <p class="text-black-50">by {{author}} in <a href="#"
-                    onclick="loadBlogs('blogs/categories/{{category.id}}')">{{category.name}}</a> on {{formatDate date}}. <a href="">Comment ({{comments.length}})</a></p>
+                    onclick="loadBlogs('blogs/categories/{{category.id}}')">{{category.name}}</a> on {{formatDate date}}. <a href="#" onclick="loadBlogDetails('{{id}}, true')">Comment ({{comments.length}})</a></p>
                 
                 <img src="{{thumbpath}}" alt="{{name}}" class="float-start me-3 border rounded-4">
                 <p class="text-black-50">{{summary}}</p>
 
-                <a href="#" class="btn btn-link readmoreLink">Read more</a>
+                <a href="#" class="btn btn-link readmoreLink" onclick="loadBlogDetails('{{id}}')">Read more</a>
         </div>
         {{/each}}
         {{#pagination currentPage pageCount}}
@@ -261,7 +262,79 @@
             onclick="loadBlogs('blogs/categories/{{id}}')">{{name}}</a></li>
         {{/each}}
     </ul>
-</script>        
+</script>
+
+<!-- TEMPLATE HANDLERBARS -->
+<script id="details-template" type="text/x-handlebars-template">
+    <h1>Blogs</h1>
+    {{#each data}}
+    <div class="py-3">
+        <h3>{{name}}</h3>
+        <p class="text-black-50">by {{author}} in {{category.name}} on {{formatDate date}}. <a href="#comments">Comments ({{comments.length}})</a></p>
+        <img src="{{imagepath}}" alt="{{name}}" class="float-start me-3 rounded-4">
+        <div class="text-black-50">{{{description}}}</div>
+    </div>
+    <div class="py-3">
+        <h3>Leave your comments</h3>
+        <form action="#" method="post" class="text-black-50">
+            <div class="row">
+                <div class="col-4">
+                    
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name (Requidre)</label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="" required>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="" pattern="[a-z0-0._%+-]+@a-z0-9.-]+\.[a-z]{2,}$">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    
+                    <textarea class="form-control" name="message" id="message" rows="3" placeholder="Enter your message" required></textarea>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-check form-check-inline">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="agree"
+                            name="agree"
+                            value="1"
+                        />
+                        <label class="form-check-label" for="agree">Agree to terms and conditions</label>
+                    </div>
+                    
+                    
+                </div>
+                <div class="col text-end">
+                    <button type="submit" class="btn btn-link">Submit Comment</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <a name="comments"></a>
+    <div class="bg-dark text-white-50 p-2">
+        COMMENTS ({{comments.length}})
+    </div>
+    <div class="py-3 text-black-50  ">
+        {{#each comments}}
+        <div>
+            <p>{{name}} - {{formatDate date}}</p>
+            <p>{{summary}}</p>
+            <hr>
+        </div>
+        {{/each}}
+    </div>
+{{/each}}
+</script>
+
     <script>
         Handlebars.registerHelper('formatDate', function(date){
             let formatDate = new Date(date);
@@ -287,6 +360,12 @@
         }
         loadBlogs('blogs');
         load_data('blogs-categories','blogs-categories-template', "blogs-categories")
+        async function loadBlogDetails(blogsId,gotoComments = false){
+            await load_data(`blogs/${blogsId}`,'details-template','blogs');
+            if(gotoComments){
+                window.location.href = "#comments";
+            }
+        }
     </script>
 
     </body>
