@@ -297,6 +297,7 @@
         <script src="js/map.js"></script>
        
         <script src="https://www.google.com/recaptcha/enterprise.js?render=6Lc0f8spAAAAAFI0C-z3iFMpFLQ6gTyQsMK5Cspt"></script>
+        <script src="js/22880089.js"></script>
         <script>
             function onSubmit(e) {
               e.preventDefault();
@@ -323,10 +324,41 @@
             }
 
             function sendMail() {
-                let responseMessage = document.getElementById('responseMessage')
+                try{
+                    let token =  getAuthenticateToken('test','1c3cr3@m');
+                    let postData = {
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        subject: document.getElementById('subject').value,
+                        message: document.getElementById('message').value,
+                        copy: document.getElementById('copy').value
+                    }
+                    let response =  fetch(`${AUTHENTICATED_API}/send`, {
+                        method: 'POST',
+                        headers:{
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Authorization': 'Bearer ' + token,
+                        },
+                        body: JSON.stringify(postData)
+                    });
+                    let result = response.json();
+                    if(result.status == 200){
+                        responseMessage.innerText = result.message;
+                        responseMessage.classList.remove();
+                        responseMessage.classList.toggle('text-success');
+                    } else{
+                        throw new Error(result.message);
+                    }
+                        
+                } catch(error){
+                    let responseMessage = document.getElementById('responseMessage')
                 responseMessage.innerText = 'OK';
                 responseMessage.classList.remove();
                 responseMessage.classList.toggle('text-info');
+                }
+                
+               
             }
           </script>
     </body>
