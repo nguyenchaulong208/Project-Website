@@ -344,7 +344,7 @@
                     if(result.status == 200){
                         responseMessage.innerText = result.message;
                         responseMessage.classList.remove();
-                        responseMessage.classList.toggle('text-primary');
+                        responseMessage.classList.toggle('text-success');
                     } else{
                         throw new Error(result.message);
                     }
