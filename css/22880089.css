@@ -160,3 +160,15 @@ footer{
     background:url('../images/marker1.png') no-repeat 0 0.25rem;
     padding: 0 0 0.5rem 1.5rem;
 }
+
+/* MAP */
+#map{
+    height: 400px;
+    width: 100%;
+}
+
+/* button send */
+btn-primary{
+    background-color: var(--web1-blue) !important;
+    border: none;
+}
