@@ -1,6 +1,6 @@
 
 const API = 'https://web1-api.vercel.app/api';
-const AUTHENTICAT_API = 'https://web1-api.vercel.app/users';
+const AUTHENTICATE_API = 'https://web1-api.vercel.app/users';
 // get list product
 async function load_data(request, templateId, viewId){
     const response = await fetch(`${API}/${request}`);
@@ -13,7 +13,7 @@ async function load_data(request, templateId, viewId){
 }
 
 async function getAuthenticateToken(username,password){
-    let response = await fetch(`${AUTHENTICAT_API}/authenticate`, {
+    let response = await fetch(`${AUTHENTICATE_API}/authenticate`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
