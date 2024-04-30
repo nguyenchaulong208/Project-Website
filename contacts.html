@@ -163,7 +163,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <div id="responseMessage" class="text-info text-center">
+                            <div id="responseMessage" class="text-primary">
                                 <div id="responseMessage" class="text-danger"></div>
                             </div>
                         </div>
@@ -348,7 +348,7 @@
                     if(result.status == 200){
                         responseMessage.innerText = result.message;
                         responseMessage.classList.remove();
-                        responseMessage.classList.toggle('text-success');
+                        responseMessage.classList.toggle('text-primary');
                     } else{
                         throw new Error(result.message);
                     }
