@@ -323,17 +323,18 @@
               });
             }
 
-            function sendMail() {
+           async function sendMail() {
+                let responseMessage = document.getElementById('responseMessage');
                 try{
-                    let token =  getAuthenticateToken('test','1c3cr3@m');
+                    let token = await getAuthenticateToken('test', '1c3cr3@m');
                     let postData = {
                         name: document.getElementById('name').value,
                         email: document.getElementById('email').value,
                         subject: document.getElementById('subject').value,
                         message: document.getElementById('message').value,
                         copy: document.getElementById('copy').value
-                    }
-                    let response =  fetch(`${AUTHENTICATED_API}/send`, {
+                    };
+                    let response = await fetch(`${AUTHENTICATED_API}/send`, {
                         method: 'POST',
                         headers:{
                             'Content-Type': 'application/json',
@@ -342,7 +343,8 @@
                         },
                         body: JSON.stringify(postData)
                     });
-                    let result = response.json();
+                    
+                    let result = await response.json();
                     if(result.status == 200){
                         responseMessage.innerText = result.message;
                         responseMessage.classList.remove();
