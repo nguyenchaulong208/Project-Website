@@ -5,8 +5,9 @@ const AUTHENTICATE_API = 'https://web1-api.vercel.app/users';
 async function load_data(request, templateId, viewId){
     const response = await fetch(`${API}/${request}`);
     const getData = await response.json();
-    var getElement = document.getElementById(templateId).innerHTML;
-    var template = Handlebars.compile(getElement)
+    // var getElement = document.getElementById(templateId).innerHTML;
+    // var template = Handlebars.compile(getElement);
+    var template = Handlebars.templates[`${templateId}.hbs`];
     var context = {data: getData};
     var view = document.getElementById(viewId);
     view.innerHTML = template(context);
