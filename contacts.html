@@ -301,7 +301,7 @@
                     },
                     body: JSON.stringify({'g-token': token})
                   });
-                  if(response.status === 200) {
+                  if(response.status == 200) {
                     sendMail();
                   } else {
                     document.getElementById('responseMessage').innerText = 'Error: Cannot verify reCAPTCHA';
